@@ -34,9 +34,9 @@
                                 <tr>
                                     <td>{{ $pemilik_pemasukan->date }}</td></td>
                                     <td>{{ $pemilik_pemasukan->selling }}</td>
-                                    <td>{{ $pemilik_pemasukan->income }}</td>
+                                    <td>@currency($pemilik_pemasukan->income)</td>
                                     @role("Pemilik Usaha")
-                                        <td class="d-flex">                                  
+                                        <td class="d-flex">
                                             <a href="{{ route("pemilik-pemasukan.edit", $pemilik_pemasukan->id) }}">
                                                 <button class="btn btn-warning">Edit</button>
                                             </a>
