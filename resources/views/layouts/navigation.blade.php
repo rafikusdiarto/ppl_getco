@@ -33,17 +33,23 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+                @role('Pemilik Usaha')
                 <a class="collapse-item" href="{{ route('pemilik-bahan-baku.index') }}">Bahan Baku Owner</a>
+                @endrole
+                @role('Supplier')
                 <a class="collapse-item" href="{{ route('supplier-bahan-baku.index') }}">Bahan Baku Supplier</a>
+                @endrole
             </div>
         </div>
     </li>
 
+    @role('Pemilik Usaha')
     <li class="nav-item @if(request()->routeIs('kerja-sama.index')) active @endif">
         <a class="nav-link" href="{{ route('kerja-sama.index') }}">
             <i class="fa-solid fa-file-pen"></i>
             <span>{{ __('Pencatatan Bahan Baku') }}</span></a>
     </li>
+    @endrole
 
     @role('Supplier')
     <li class="nav-item @if(request()->routeIs('laporan-keuangan')) active @endif">
@@ -59,24 +65,29 @@
             <i class="fa-solid fa-store"></i>
             <span>{{ __('Bahan Baku Owner') }}</span></a>
     </li> --}}
-
+    @role('Supplier')
     <li class="nav-item @if(request()->routeIs('supplier-pemasukan.index')) active @endif">
         <a class="nav-link" href="{{ route('supplier-pemasukan.index') }}">
             <i class="fa-solid fa-store"></i>
             <span>{{ __('Pemasukan Supplier') }}</span></a>
     </li>
+    @endrole
 
+    @role('Pemilik Usaha')
     <li class="nav-item @if(request()->routeIs('pemilik-pemasukan.index')) active @endif">
         <a class="nav-link" href="{{ route('pemilik-pemasukan.index') }}">
             <i class="fa-solid fa-store"></i>
             <span>{{ __('Pemasukan Pemilik Usaha') }}</span></a>
     </li>
+    @endrole
 
+    @role('Pemilik Usaha')
     <li class="nav-item @if(request()->routeIs('pemilik-pengeluaran.index')) active @endif">
         <a class="nav-link" href="{{ route('pemilik-pengeluaran.index') }}">
             <i class="fa-solid fa-store"></i>
             <span>{{ __('Pengeluaran Pemilik Usaha') }}</span></a>
     </li>
+    @endrole
 
     <!-- Divider -->
     <hr class="sidebar-divider">
