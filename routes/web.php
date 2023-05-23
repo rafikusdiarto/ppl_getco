@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\PemilikPemasukanController;
-use App\Http\Controllers\PemilikPengeluaranController;
 use App\Models\KerjaSama;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -11,9 +9,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BahanBakuController;
 use App\Http\Controllers\KerjaSamaController;
 use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\LaporanKeuanganController;
+use App\Http\Controllers\PemilikPemasukanController;
 use App\Http\Controllers\SupplierBahanBakuController;
 use App\Http\Controllers\SupplierPemasukanController;
+use App\Http\Controllers\PemilikPengeluaranController;
+use App\Http\Controllers\LaporanKeuanganSupplierController;
+use App\Http\Controllers\LaporanKeuanganOwnerController;
 
 
 /*
@@ -54,7 +55,8 @@ Route::middleware('auth')->group(function () {
     Route::resource("supplier-pemasukan", SupplierPemasukanController::class);
 
     // Laporan Keuangan
-    Route::get("laporan-keuangan", [LaporanKeuanganController::class, "index"])->name("laporan-keuangan");
+    Route::get("laporan-keuangan-supplier", [LaporanKeuanganSupplierController::class, "index"])->name("laporan-keuangan-sup");
+    Route::get("laporan-keuangan-owner", [LaporanKeuanganOwnerController::class, "index"])->name("laporan-keuangan-own");
 
 
     // Kerja Sama

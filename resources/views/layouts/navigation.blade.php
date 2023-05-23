@@ -52,13 +52,14 @@
     @endrole
 
     @role('Supplier')
-    <li class="nav-item @if(request()->routeIs('laporan-keuangan')) active @endif">
-        <a class="nav-link" href="{{ route('laporan-keuangan') }}">
+    <hr class="sidebar-divider">
+    <li class="nav-item @if(request()->routeIs('laporan-keuangan-sup')) active @endif">
+        <a class="nav-link" href="{{ route('laporan-keuangan-sup') }}">
             <i class="fa-solid fa-file-pen"></i>
-            <span>{{ __('Laporan Keuangan') }}</span></a>
+            <span>{{ __('Laporan Keuangan Supplier') }}</span></a>
     </li>
+    <hr class="sidebar-divider">
     @endrole
-
 
     {{-- <li class="nav-item @if(request()->routeIs('pemilik-bahan-baku.index')) active @endif">
         <a class="nav-link" href="{{ route('pemilik-bahan-baku.index') }}">
@@ -73,7 +74,10 @@
     </li>
     @endrole
 
+
+
     @role('Pemilik Usaha')
+    <hr class="sidebar-divider">
     <li class="nav-item @if(request()->routeIs('pemilik-pemasukan.index')) active @endif">
         <a class="nav-link" href="{{ route('pemilik-pemasukan.index') }}">
             <i class="fa-solid fa-store"></i>
@@ -86,6 +90,16 @@
         <a class="nav-link" href="{{ route('pemilik-pengeluaran.index') }}">
             <i class="fa-solid fa-store"></i>
             <span>{{ __('Pengeluaran Pemilik Usaha') }}</span></a>
+    </li>
+    <hr class="sidebar-divider">
+    @endrole
+
+
+    @role('Pemilik Usaha')
+    <li class="nav-item @if(request()->routeIs('laporan-keuangan-own')) active @endif">
+        <a class="nav-link" href="{{ route('laporan-keuangan-own') }}">
+            <i class="fa-solid fa-file-pen"></i>
+            <span>{{ __('Laporan Keuangan Owner') }}</span></a>
     </li>
     @endrole
 
