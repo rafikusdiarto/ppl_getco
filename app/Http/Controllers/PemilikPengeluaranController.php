@@ -35,7 +35,7 @@ class PemilikPengeluaranController extends Controller
 
         DB::beginTransaction();
         try {
-            $bahan_baku = PemilikBahanBaku::firstOrCreate([
+            $bahan_baku = BahanBaku::firstOrCreate([
                 "name" => Str::title($request->name),
             ]);
             $bahan_baku;
@@ -72,7 +72,7 @@ class PemilikPengeluaranController extends Controller
 
         DB::beginTransaction();
         try {
-            $bahan_baku = PemilikBahanBaku::firstOrCreate([
+            $bahan_baku = BahanBaku::firstOrCreate([
                 "name" => Str::title($request->name),
             ]);
 
