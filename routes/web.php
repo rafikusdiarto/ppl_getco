@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PemilikPemasukanController;
+use App\Http\Controllers\PemilikPengeluaranController;
 use App\Models\KerjaSama;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -64,4 +65,5 @@ Route::middleware('auth')->group(function () {
     Route::put("kerja-sama/persetujuan/{kerjaSama}", [KerjaSamaController::class, "updateKerjaSama"])->name("kerja-sama.persetujuan.updateKerjaSama");
 
     Route::resource("pemilik-pemasukan", PemilikPemasukanController::class);
+    Route::resource("pemilik-pengeluaran", PemilikPengeluaranController::class);
 });

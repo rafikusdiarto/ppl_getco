@@ -28,6 +28,7 @@ class PemilikPemasukanController extends Controller
         DB::beginTransaction();
         try {
             PemilikPemasukan::create([
+                "user_id" => auth()->user()->id,
                 "date" => $request->date,
                 "selling" => $request->selling,
                 "income" => $request->income

@@ -15,8 +15,16 @@ class BahanBaku extends Model
     {
         return $this->hasMany(PemilikBahanBaku::class);
     }
+    public function PemilikPemasukans()
+    {
+        return $this->hasMany(PemilikBahanBaku::class);
+    }
 
     public function SupplierBahanBakus()
+    {
+        return $this->hasMany(SupplierBahanBaku::class);
+    }
+    public function SupplierPemasukans()
     {
         return $this->hasMany(SupplierBahanBaku::class);
     }

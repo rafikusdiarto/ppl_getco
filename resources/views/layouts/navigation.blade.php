@@ -69,6 +69,12 @@
             <span>{{ __('Pemasukan Pemilik Usaha') }}</span></a>
     </li>
 
+    <li class="nav-item @if(request()->routeIs('pemilik-pengeluaran.index')) active @endif">
+        <a class="nav-link" href="{{ route('pemilik-pengeluaran.index') }}">
+            <i class="fa-solid fa-store"></i>
+            <span>{{ __('Pengeluaran Pemilik Usaha') }}</span></a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
