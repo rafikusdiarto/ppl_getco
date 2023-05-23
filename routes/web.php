@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PemilikPemasukanController;
 use App\Models\KerjaSama;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -61,4 +62,6 @@ Route::middleware('auth')->group(function () {
     Route::post("kerja-sama/permintaan/{kerjaSama_id}", [KerjaSamaController::class, "storePermintaan"])->name("kerja-sama.storePermintaan");
     Route::get("kerja-sama/riwayat/{kerjaSama}", [KerjaSamaController::class, "index_riwayat"])->name("kerja-sama.riwayat.index");
     Route::put("kerja-sama/persetujuan/{kerjaSama}", [KerjaSamaController::class, "updateKerjaSama"])->name("kerja-sama.persetujuan.updateKerjaSama");
+
+    Route::resource("pemilik-pemasukan", PemilikPemasukanController::class);
 });
