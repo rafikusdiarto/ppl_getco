@@ -8,7 +8,7 @@ use App\Models\SupplierPemasukan;
 use Carbon\Carbon;
 
 
-class LaporanKeuanganController extends Controller
+class LaporanKeuanganSupplierController extends Controller
 {
     private $param;
     public function __construct(){
@@ -50,7 +50,7 @@ class LaporanKeuanganController extends Controller
             $this->param['countIncome'] = $bahanBaku->sum('income');
 
 
-            return view('pages.rekap-laporan-keuangan.index', $this->param);
+            return view('pages.rekap-laporan-keuangan.laporan-keuangan-supplier', $this->param);
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
