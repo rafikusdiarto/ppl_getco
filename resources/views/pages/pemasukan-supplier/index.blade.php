@@ -23,14 +23,14 @@
                         <tr>
                             <th>Tanggal</th>
                             <th>Nama Bahan Baku</th>
-                            <th>Penjualan/kelapa</th>
+                            <th>Penjualan/kelapa (Kg)</th>
                             <th>Pemasukan</th>
                             @role("Supplier")
                                 <th>Aksi</th>
                             @endrole
                         </tr>
                         </thead>
-                        <tfoot>
+                        {{-- <tfoot>
                         <tr>
                             <th>Tanggal</th>
                             <th>Nama Bahan Baku</th>
@@ -40,16 +40,16 @@
                                 <th>Aksi</th>
                             @endrole
                         </tr>
-                        </tfoot>
+                        </tfoot> --}}
                         <tbody>
                             @foreach ($supplier_pemasukans as $supplier_pemasukan)
                                 <tr>
                                     <td>{{ $supplier_pemasukan->date }}</td>
                                     <td>{{ $supplier_pemasukan->BahanBaku->name }}</td>
                                     <td>{{ $supplier_pemasukan->selling }}</td>
-                                    <td>{{ $supplier_pemasukan->income }}</td>
+                                    <td>@currency($supplier_pemasukan->income)</td>
                                     @role("Supplier")
-                                        <td class="d-flex">                                  
+                                        <td class="d-flex">
                                             <a href="{{ route("supplier-pemasukan.edit", $supplier_pemasukan->id) }}">
                                                 <button class="btn btn-warning">Edit</button>
                                             </a>

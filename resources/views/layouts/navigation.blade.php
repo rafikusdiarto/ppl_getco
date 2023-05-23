@@ -45,11 +45,14 @@
             <span>{{ __('Pencatatan Bahan Baku') }}</span></a>
     </li>
 
+    @role('Supplier')
     <li class="nav-item @if(request()->routeIs('laporan-keuangan')) active @endif">
         <a class="nav-link" href="{{ route('laporan-keuangan') }}">
             <i class="fa-solid fa-file-pen"></i>
             <span>{{ __('Laporan Keuangan') }}</span></a>
     </li>
+    @endrole
+
 
     {{-- <li class="nav-item @if(request()->routeIs('pemilik-bahan-baku.index')) active @endif">
         <a class="nav-link" href="{{ route('pemilik-bahan-baku.index') }}">
