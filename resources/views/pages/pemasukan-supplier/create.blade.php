@@ -8,7 +8,7 @@
         <h1 class="h3 mb-5 text-gray-800">Tambah Pemasukan</h1>
 
         <!-- DataTales Example -->
-        <form action="{{ route("supplier-bahan-baku.store") }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route("supplier-pemasukan.store") }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="date" class="form-label">Tanggal</label>

@@ -21,6 +21,7 @@ class SupplierPemasukanController extends Controller
         // return view("pages.pemasukan-supplier.index")->with([
         //     "bahan_bakus" => BahanBaku::with(["BahanBaku"])->whereUserId(Auth::user()->id)->get()
         // ]);
+        // dd('cek');
         return view("pages.pemasukan-supplier.index")->with([
             "supplier_pemasukans" => SupplierPemasukan::whereUserId(Auth::user()->id)->get()
         ]);
@@ -51,8 +52,8 @@ class SupplierPemasukanController extends Controller
             $bahan_baku = BahanBaku::firstOrCreate([
                 "name" => Str::title($request->name),
             ]);
-
-            $supplier_pemasukan = SupplierPemasukan::create([
+            $bahan_baku;
+            SupplierPemasukan::create([
                 "user_id" => Auth::user()->id,
                 "date" => $request->date,
                 "bahan_baku_id" => $bahan_baku->id,
@@ -60,7 +61,7 @@ class SupplierPemasukanController extends Controller
                 "income" => $request->income
             ]);
             DB::commit();
-            return redirect()->route("pemasukan-supplier.index")->with("success", "Data berhasil ditambahkan");
+            return redirect()->route("supplier-pemasukan.index")->with("success", "Data berhasil ditambahkan");
         } catch (Exception $e) {
             dd($e->getMessage());
             DB::rollBack();
@@ -91,6 +92,7 @@ class SupplierPemasukanController extends Controller
      */
     public function update(Request $request, SupplierPemasukan $supplierPemasukan)
     {
+        // dd($supplierPemasukan);
         $request->validate([
             "date" => "required",
             "name" => "required",
@@ -112,7 +114,7 @@ class SupplierPemasukanController extends Controller
                 "income" => $request->income
             ]);
             DB::commit();
-            return redirect()->route("pemasukan-supplier.index")->with("success", "Data berhasil ditambahkan");
+            return redirect()->route("supplier-pemasukan.index")->with("success", "Data berhasil ditambahkan");
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());
@@ -122,9 +124,9 @@ class SupplierPemasukanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SupplierPemasukan $supplierPemasukan)
-    {
-        $supplierPemasukan->delete();
-        return redirect()->route("pemasukan-supplier.index")->with("success", "Data berhasil dihapus");
-    }
+    // public function destroy(SupplierPemasukan $supplierPemasukan)
+    // {
+    //     $supplierPemasukan->delete();
+    //     return redirect()->route("supplier-pemasukan.index")->with("success", "Data berhasil dihapus");
+    // }
 }

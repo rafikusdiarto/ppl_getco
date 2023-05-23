@@ -44,8 +44,8 @@
                         <tbody>
                             @foreach ($supplier_pemasukans as $supplier_pemasukan)
                                 <tr>
-                                    <td>{{ $supplier_pemasukan->SupplierPemasukan->date }}</td>
-                                    <td>{{ $bahan_baku->BahanBaku->name }}</td>
+                                    <td>{{ $supplier_pemasukan->date }}</td>
+                                    <td>{{ $supplier_pemasukan->BahanBaku->name }}</td>
                                     <td>{{ $supplier_pemasukan->selling }}</td>
                                     <td>{{ $supplier_pemasukan->income }}</td>
                                     @role("Supplier")
@@ -53,11 +53,11 @@
                                             <a href="{{ route("supplier-pemasukan.edit", $supplier_pemasukan->id) }}">
                                                 <button class="btn btn-warning">Edit</button>
                                             </a>
-                                            <form method="POST" action="{{ route("supplier-pemasukan.destroy", $supplier_pemasukan->id) }}">
+                                            {{-- <form method="POST" action="{{ route("supplier-pemasukan.destroy", $supplier_pemasukan->id) }}">
                                                 @csrf
                                                 @method("DELETE")
                                                 <button type="submit" class="btn btn-danger">Hapus</button>
-                                            </form>
+                                            </form> --}}
                                         </td>
                                     @endrole
                                 </tr>
