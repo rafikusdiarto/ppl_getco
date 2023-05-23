@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PemilikBahanBaku;
 use Exception;
 use App\Models\BahanBaku;
 use Illuminate\Support\Str;
@@ -34,7 +35,7 @@ class PemilikPengeluaranController extends Controller
 
         DB::beginTransaction();
         try {
-            $bahan_baku = BahanBaku::firstOrCreate([
+            $bahan_baku = PemilikBahanBaku::firstOrCreate([
                 "name" => Str::title($request->name),
             ]);
             $bahan_baku;
@@ -71,7 +72,7 @@ class PemilikPengeluaranController extends Controller
 
         DB::beginTransaction();
         try {
-            $bahan_baku = BahanBaku::firstOrCreate([
+            $bahan_baku = PemilikBahanBaku::firstOrCreate([
                 "name" => Str::title($request->name),
             ]);
 
