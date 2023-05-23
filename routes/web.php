@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BahanBakuController;
 use App\Http\Controllers\KerjaSamaController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\LaporanKeuanganController;
 use App\Http\Controllers\SupplierBahanBakuController;
 use App\Http\Controllers\SupplierPemasukanController;
 
@@ -50,6 +51,8 @@ Route::middleware('auth')->group(function () {
     Route::resource("supplier-bahan-baku", SupplierBahanBakuController::class);
     Route::resource("supplier-pemasukan", SupplierPemasukanController::class);
 
+    // Laporan Keuangan
+    Route::get("laporan-keuangan", [LaporanKeuanganController::class, "index"])->name("laporan-keuangan");
 
 
     // Kerja Sama

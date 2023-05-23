@@ -32,7 +32,7 @@
                             @endrole
                         </tr>
                         </thead>
-                        <tfoot>
+                        {{-- <tfoot>
                         <tr>
                             <th>Nama</th>
                             <th>Gambar</th>
@@ -44,7 +44,7 @@
                                 <th>Aksi</th>
                             @endrole
                         </tr>
-                        </tfoot>
+                        </tfoot> --}}
                         <tbody>
                             @foreach ($bahan_bakus as $bahan_baku)
                                 <tr>
@@ -52,12 +52,12 @@
                                     <td>
                                         <img src="{{ $bahan_baku->getFirstMediaUrl("gambar-bahan-baku") }}" width="100px">
                                     </td>
-                                    <td>{{ $bahan_baku->price }}</td>
+                                    <td>@currency($bahan_baku->price)</td>
                                     <td>{{ $bahan_baku->quantity }}</td>
                                     <td>{{ $bahan_baku->description }}</td>
                                     <td>{{ $bahan_baku->available }}</td>
                                     @role("Supplier")
-                                        <td class="d-flex">                                  
+                                        <td class="d-flex">
                                             <a href="{{ route("supplier-bahan-baku.edit", $bahan_baku->id) }}">
                                                 <button class="btn btn-warning">Edit</button>
                                             </a>

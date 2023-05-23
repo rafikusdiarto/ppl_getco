@@ -111,7 +111,11 @@
 
             </nav>
             <!-- End of Topbar -->
-            @yield('content')
+            <div class="container-fluid">
+
+                @yield('content')
+                
+            </div>
         </div>
         <!-- End of Main Content -->
 
