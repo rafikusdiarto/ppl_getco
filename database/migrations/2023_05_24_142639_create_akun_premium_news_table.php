@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('akun_premiums', function (Blueprint $table) {
+        Schema::create('akun_premium_news', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id");
-            $table->string("no_rek")->nullable();
-            $table->date('tanggal_bayar')->nullable();
-            $table->date('expired_date')->nullable();
+            $table->foreignId('user_id');
+            $table->boolean('status');
             $table->timestamps();
-
         });
     }
 
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('akun_premiums');
+        Schema::dropIfExists('akun_premium_news');
     }
 };

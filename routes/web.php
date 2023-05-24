@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PremiumController;
 use App\Models\KerjaSama;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::post("akun-premium/store", [AdminController::class, "store"])->name("store-akun-premium");
     Route::post("akun-premium/update/{akunpremium", [AdminController::class, "update"])->name("update-akun-premium");
     Route::delete("akun-premium/store", [AdminController::class, "store"])->name("store-akun-premium");
+    Route::patch("akun-premium/acc", [AdminController::class, "acc"])->name("acc-akun-premium");
 
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
@@ -81,4 +83,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource("pemilik-pemasukan", PemilikPemasukanController::class);
     Route::resource("pemilik-pengeluaran", PemilikPengeluaranController::class);
+
+    // Premium
+    Route::resource('syarat-akun-premium', PremiumController::class);
 });

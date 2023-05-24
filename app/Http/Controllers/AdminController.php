@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AkunPremium;
+use App\Models\AkunPremiumNew;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,8 +31,11 @@ class AdminController extends Controller
     {
         try {
             $akun = AkunPremium::all();
-            $this->param['getAkunPremium'] = $akun;
-            return view('pages.akun-premium.index', $this->param);
+            $waiting_akun = AkunPremiumNew::all();
+            return view('pages.akun-premium.index', [
+                'getAkunPremium' => $akun,
+                'getWaitingAkun' => $waiting_akun
+            ]);
 
         } catch (Exception $e) {
             dd($e->getMessage());
@@ -84,7 +89,6 @@ class AdminController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            "nama" => "required",
             "no_rek" => "required",
             "tanggal_bayar" => "required",
             "expired_date" => "required",
@@ -93,7 +97,6 @@ class AdminController extends Controller
        DB::beginTransaction();
        try {
             AkunPremium::create($request([
-               "nama" => $request->nama,
                "no_rek" => $request->no_rek,
                "tanggal_bayar" => $request->tanggal_bayar,
                "expired_date" => $request->expired_date
@@ -106,5 +109,13 @@ class AdminController extends Controller
            return redirect()->back()->with('error', $e->getMessage());
        }
 
+    }
+    public function acc(Request $request)
+    {
+        AkunPremium::create([
+            'user_id' => $request->id,
+        ]);
+        AkunPremiumNew::where('user_id', $request->id)->update(['status' => true]);
+        return redirect()->back();
     }
 }

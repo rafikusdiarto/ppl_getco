@@ -8,12 +8,9 @@
         <h1 class="h3 mb-5 text-gray-800">Tambah Akun Premium Baru</h1>
 
         <!-- DataTales Example -->
-        <form action="{{ route("store-akun-premium") }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route("update-akun-premium") }}" method="POST" enctype="multipart/form-data">
+            @method('put')
             @csrf
-            <div class="mb-3">
-                <label for="name" class="form-label">Nama</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{$getDetailAkun->nama}}">
-            </div>
             <div class="mb-3">
                 <label for="no_rek" class="form-label">No. Rekening</label>
                 <input type="text" class="form-control" id="no_rek" name="no_rek"value="{{$getDetailAkun->no_rek}}">

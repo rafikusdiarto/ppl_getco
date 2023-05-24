@@ -12,7 +12,7 @@ class AkunPremium extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'nama',
+        'user_id',
         'no_rek',
         'tanggal_bayar',
         'expired_date',
