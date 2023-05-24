@@ -25,6 +25,7 @@
             <i class="fa-solid fa-store"></i>
             <span>{{ __('Bahan Baku') }}</span></a>
     </li> --}}
+    @role('Pemilik Usaha')
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
            aria-expanded="true" aria-controls="collapseTwo" style="padding-top: inherit;">
@@ -33,15 +34,26 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                @role('Pemilik Usaha')
                 <a class="collapse-item" href="{{ route('pemilik-bahan-baku.index') }}">Bahan Baku Owner</a>
-                @endrole
-                @role('Supplier')
-                <a class="collapse-item" href="{{ route('supplier-bahan-baku.index') }}">Bahan Baku Supplier</a>
-                @endrole
             </div>
         </div>
     </li>
+    @endrole
+
+    @role('Supplier')
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+           aria-expanded="true" aria-controls="collapseTwo" style="padding-top: inherit;">
+            <i class="fa-solid fa-store"></i>
+            <span>Bahan Baku</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('supplier-bahan-baku.index') }}">Bahan Baku Supplier</a>
+            </div>
+        </div>
+    </li>
+    @endrole
 
     @role('Pemilik Usaha')
     <li class="nav-item @if(request()->routeIs('kerja-sama.index')) active @endif">
@@ -66,6 +78,14 @@
             <i class="fa-solid fa-store"></i>
             <span>{{ __('Bahan Baku Owner') }}</span></a>
     </li> --}}
+    @role('Admin')
+    <li class="nav-item @if(request()->routeIs('akun-premium')) active @endif">
+        <a class="nav-link" href="{{ route('akun-premium') }}">
+            <i class="fa-solid fa-store"></i>
+            <span>{{ __('Akun Premium') }}</span></a>
+    </li>
+    @endrole
+
     @role('Supplier')
     <li class="nav-item @if(request()->routeIs('supplier-pemasukan.index')) active @endif">
         <a class="nav-link" href="{{ route('supplier-pemasukan.index') }}">

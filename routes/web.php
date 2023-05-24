@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BahanBakuController;
 use App\Http\Controllers\KerjaSamaController;
@@ -13,8 +14,8 @@ use App\Http\Controllers\PemilikPemasukanController;
 use App\Http\Controllers\SupplierBahanBakuController;
 use App\Http\Controllers\SupplierPemasukanController;
 use App\Http\Controllers\PemilikPengeluaranController;
-use App\Http\Controllers\LaporanKeuanganSupplierController;
 use App\Http\Controllers\LaporanKeuanganOwnerController;
+use App\Http\Controllers\LaporanKeuanganSupplierController;
 
 
 /*
@@ -41,6 +42,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('auth')->group(function () {
     Route::view('about', 'about')->name('about');
 
+    // Admin
+    Route::get("akun-premium", [AdminController::class, "index"])->name("akun-premium");
+
+
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
@@ -56,7 +61,6 @@ Route::middleware('auth')->group(function () {
 
     // Laporan Keuangan
     Route::get("laporan-keuangan-supplier", [LaporanKeuanganSupplierController::class, "index"])->name("laporan-keuangan-sup");
-    Route::get("laporan-keuangan-owner", [LaporanKeuanganOwnerController::class, "index"])->name("laporan-keuangan-own");
 
 
     // Kerja Sama
@@ -65,6 +69,7 @@ Route::middleware('auth')->group(function () {
     Route::post("kerja-sama/permintaan/{kerjaSama_id}", [KerjaSamaController::class, "storePermintaan"])->name("kerja-sama.storePermintaan");
     Route::get("kerja-sama/riwayat/{kerjaSama}", [KerjaSamaController::class, "index_riwayat"])->name("kerja-sama.riwayat.index");
     Route::put("kerja-sama/persetujuan/{kerjaSama}", [KerjaSamaController::class, "updateKerjaSama"])->name("kerja-sama.persetujuan.updateKerjaSama");
+    Route::get("laporan-keuangan-owner", [LaporanKeuanganOwnerController::class, "index"])->name("laporan-keuangan-own");
 
     Route::resource("pemilik-pemasukan", PemilikPemasukanController::class);
     Route::resource("pemilik-pengeluaran", PemilikPengeluaranController::class);
