@@ -8,7 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class AkunPremium extends Model
 {
     use HasFactory;
-    protected $guarded = ["id"];
+    protected $table = 'akun_premiums';
+    protected $guarded = ['id'];
+
+    protected $fillable = [
+        'nama',
+        'no_rek',
+        'tanggal_bayar',
+        'expired_date',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
     public function User()
     {

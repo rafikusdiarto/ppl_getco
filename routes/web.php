@@ -44,6 +44,11 @@ Route::middleware('auth')->group(function () {
 
     // Admin
     Route::get("akun-premium", [AdminController::class, "index"])->name("akun-premium");
+    Route::get("akun-premium/create", [AdminController::class, "create"])->name("create-akun-premium");
+    Route::post("akun-premium/{akunpremium}/edit", [AdminController::class, "edit"])->name("edit-akun-premium");
+    Route::post("akun-premium/store", [AdminController::class, "store"])->name("store-akun-premium");
+    Route::post("akun-premium/update/{akunpremium", [AdminController::class, "update"])->name("update-akun-premium");
+    Route::delete("akun-premium/store", [AdminController::class, "store"])->name("store-akun-premium");
 
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
