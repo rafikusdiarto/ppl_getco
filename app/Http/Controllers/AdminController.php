@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AkunPremium;
-use App\Models\AkunPremiumNew;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\AkunPremium;
+use Exception;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\AkunPremiumNew;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -107,15 +109,24 @@ class AdminController extends Controller
            dd($e->getMessage());
            DB::rollBack();
            return redirect()->back()->with('error', $e->getMessage());
-       }
-
+        }
+        
     }
     public function acc(Request $request)
     {
-        AkunPremium::create([
-            'user_id' => $request->id,
-        ]);
-        AkunPremiumNew::where('user_id', $request->id)->update(['status' => true]);
-        return redirect()->back();
+        DB::beginTransaction();
+        try{
+            AkunPremium::create([
+                'user_id' => $request->id,
+            ]);
+            AkunPremiumNew::where('user_id', $request->id)->update(['status' => true]);
+            User::where('id', $request->id)->update(['is_premium' => true]);
+            DB::commit();
+            return redirect()->back();
+        }catch (Exception $e){
+            dd($e->getMessage());
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 }

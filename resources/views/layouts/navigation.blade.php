@@ -52,12 +52,14 @@
             <span>{{ __('Pencatatan Bahan Baku') }}</span>
         </a>
     </li>
+    @if (Auth::user()->is_premium)
     <li class="nav-item @if(request()->routeIs('kalkulator-produksi')) active @endif">
         <a class="nav-link" href="{{ route('kalkulator-produksi') }}">
             <i class="fa-solid fa-file-pen"></i>
             <span>{{ __('Kalkulator Produksi') }}</span>
         </a>
     </li>
+    @endif
     <hr class="sidebar-divider">
     <li class="nav-item @if(request()->routeIs('pemilik-pemasukan.index')) active @endif">
         <a class="nav-link" href="{{ route('pemilik-pemasukan.index') }}">

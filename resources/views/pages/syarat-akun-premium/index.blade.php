@@ -41,7 +41,7 @@
         </div>
 
         <div>
-            <a href="">Contact Admin</a>
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=+1234567890">Contact Admin</a>
             <form action="{{ route('syarat-akun-premium.store') }}" method="post">
                 @csrf
                 <button type="submit">Jos</button>
