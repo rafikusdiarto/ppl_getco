@@ -77,6 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::put("kerja-sama/persetujuan/{kerjaSama}", [KerjaSamaController::class, "updateKerjaSama"])->name("kerja-sama.persetujuan.updateKerjaSama");
     Route::get("laporan-keuangan-owner", [LaporanKeuanganOwnerController::class, "index"])->name("laporan-keuangan-own");
     Route::get("kalkulator-produksi", [KalkulatorProduksiController::class, "index"])->name("kalkulator-produksi");
+    Route::get("kalkulator-produksi/perkalian", [KalkulatorProduksiController::class, "perkalian"])->name("perkalian");
 
     Route::resource("pemilik-pemasukan", PemilikPemasukanController::class);
     Route::resource("pemilik-pengeluaran", PemilikPengeluaranController::class);
