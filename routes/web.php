@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PremiumController;
 use App\Models\KerjaSama;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -68,4 +69,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource("pemilik-pemasukan", PemilikPemasukanController::class);
     Route::resource("pemilik-pengeluaran", PemilikPengeluaranController::class);
+
+    // Premium
+    Route::get('syarat-akun-premium', [PremiumController::class, 'index']);
 });

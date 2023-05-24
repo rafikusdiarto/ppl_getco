@@ -55,6 +55,7 @@
 
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="ml-4 font-semibold text-slate-100 hover:text-white">Register</a>
+                    <button></button>
                 @endif
                 @endauth
             </div>
