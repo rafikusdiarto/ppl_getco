@@ -13,6 +13,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PemilikPemasukanController;
 use App\Http\Controllers\SupplierBahanBakuController;
 use App\Http\Controllers\SupplierPemasukanController;
+use App\Http\Controllers\KalkulatorProduksiController;
 use App\Http\Controllers\PemilikPengeluaranController;
 use App\Http\Controllers\LaporanKeuanganOwnerController;
 use App\Http\Controllers\LaporanKeuanganSupplierController;
@@ -75,6 +76,7 @@ Route::middleware('auth')->group(function () {
     Route::get("kerja-sama/riwayat/{kerjaSama}", [KerjaSamaController::class, "index_riwayat"])->name("kerja-sama.riwayat.index");
     Route::put("kerja-sama/persetujuan/{kerjaSama}", [KerjaSamaController::class, "updateKerjaSama"])->name("kerja-sama.persetujuan.updateKerjaSama");
     Route::get("laporan-keuangan-owner", [LaporanKeuanganOwnerController::class, "index"])->name("laporan-keuangan-own");
+    Route::get("kalkulator-produksi", [KalkulatorProduksiController::class, "index"])->name("kalkulator-produksi");
 
     Route::resource("pemilik-pemasukan", PemilikPemasukanController::class);
     Route::resource("pemilik-pengeluaran", PemilikPengeluaranController::class);

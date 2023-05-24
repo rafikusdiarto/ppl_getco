@@ -63,6 +63,22 @@
     </li>
     @endrole
 
+    @role('Pemilik Usaha')
+    <li class="nav-item @if(request()->routeIs('kalkulator-produksi')) active @endif">
+        <a class="nav-link" href="{{ route('kalkulator-produksi') }}">
+            <i class="fa-solid fa-file-pen"></i>
+            <span>{{ __('Kalkulator Produksi') }}</span></a>
+    </li>
+    @endrole
+
+    @role('Supplier')
+    <li class="nav-item @if(request()->routeIs('kerja-sama.index')) active @endif">
+        <a class="nav-link" href="{{ route('kerja-sama.index') }}">
+            <i class="fa-solid fa-file-pen"></i>
+            <span>{{ __('Pencatatan Bahan Baku') }}</span></a>
+    </li>
+    @endrole
+
     @role('Supplier')
     <hr class="sidebar-divider">
     <li class="nav-item @if(request()->routeIs('laporan-keuangan-sup')) active @endif">
