@@ -64,4 +64,8 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasMany(KerjaSama::class, "supplier_id");
     }
+    public function AkunPremiumNew()
+    {
+        return $this->hasMany(AkunPremiumNew::class);
+    }
 }

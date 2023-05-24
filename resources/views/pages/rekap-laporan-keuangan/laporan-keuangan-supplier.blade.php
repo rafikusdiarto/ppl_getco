@@ -126,7 +126,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [{{$getJanuary}}, {{$getFebruary}}, {{$getMarch}}, {{$getApril}}, {{$getMay}}, {{$getJune}}, {{$getJuly}}, {{$getAugust}}, {{$getSeptember}}, {{$getOctober}}, {{$getNovember}}, {{$getDecember}}],
+      data: [{{$getSellingJanuary}}, {{$getSellingFebruary}}, {{$getSellingMarch}}, {{$getSellingApril}}, {{$getSellingMay}}, {{$getSellingJune}}, {{$getSellingJuly}}, {{$getSellingAugust}}, {{$getSellingSeptember}}, {{$getSellingOctober}}, {{$getSellingNovember}}, {{$getSellingDecember}}],
     }],
   },
   options: {
@@ -247,7 +247,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [{{$getThisJanuary}}, {{$getThisFebruary}}, {{$getThisMarch}}, {{$getThisApril}}, {{$getThisMay}}, {{$getThisJune}}, {{$getThisJuly}}, {{$getThisAugust}}, {{$getThisSeptember}}, {{$getThisOctober}}, {{$getThisNovember}}, {{$getThisDecember}}],
+      data: [{{$getIncomeJanuary}}, {{$getIncomeFebruary}}, {{$getIncomeMarch}}, {{$getIncomeApril}}, {{$getIncomeMay}}, {{$getIncomeJune}}, {{$getIncomeJuly}}, {{$getIncomeAugust}}, {{$getIncomeSeptember}}, {{$getIncomeOctober}}, {{$getIncomeNovember}}, {{$getIncomeDecember}}],
     }],
   },
   options: {

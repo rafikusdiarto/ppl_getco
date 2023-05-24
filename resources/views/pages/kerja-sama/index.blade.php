@@ -16,7 +16,7 @@
                 <div class="table-responsive">
                     @role("Pemilik Usaha")
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            
+
                             <thead>
                             <tr>
                                 <th>Nama</th>
@@ -93,7 +93,7 @@
                     @endrole
 
                     @role("Supplier")
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">      
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
                                 <th>Nama</th>
