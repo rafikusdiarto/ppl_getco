@@ -22,7 +22,7 @@
                     @isset($hasil)
                     <div class="mb-3">
                         <label for="total_eskrim" class="form-label">Es Krim Yang Dihasilkan : pcs</label>
-                        <input type="number" class="form-control" id="total_eskrim" name="total_eskrim" value="{{$hasil}}">
+                        <input type="number" class="form-control" id="total_eskrim" name="total_eskrim" value="{{$hasil}}" disabled>
                     </div>
                     @endisset
                     @isset($bahan_baku, $hasil)

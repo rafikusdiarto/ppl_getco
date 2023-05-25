@@ -18,11 +18,6 @@
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Tabel Akun Premium</h6>
             </div>
-            @role("Admin")
-            <div class="card-header py-3">
-                <a href="{{ route("create-akun-premium") }}"><button class="btn btn-success">+ Tambah Akun Premium</button></a>
-            </div>
-            @endrole
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

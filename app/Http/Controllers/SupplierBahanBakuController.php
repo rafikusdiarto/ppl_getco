@@ -103,8 +103,7 @@ class SupplierBahanBakuController extends Controller
             "description" => "required",
             "available" => "required",
         ]);
-
-
+        
         DB::beginTransaction();
         try {
             $bahan_baku = BahanBaku::whereName(Str::title($request->name))->first();
@@ -115,11 +114,11 @@ class SupplierBahanBakuController extends Controller
             $bahan_baku = BahanBaku::firstOrCreate([
                 "name" => Str::title($request->name),
             ]);
-
             $supplierBahanBaku->update([
+                "user_id" => $supplierBahanBaku->user->id,
                 "bahan_baku_id" => $bahan_baku->id,
                 "price" => $request->price,
-                "quantity" => $request -> quantity,
+                "quantity" => $request->quantity,
                 "description" => $request->description,
                 "available" => $request->available
             ]);
