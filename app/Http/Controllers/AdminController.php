@@ -37,9 +37,7 @@ class AdminController extends Controller
             $akun = AkunPremium::all();
             $waiting_akun = AkunPremiumNew::all();
             $syarat = SyaratPremiumAkun::first();
-            $akun_kadaluwarsa = $waiting_akun->where('updated_at', '<', date('Y-m-d', strtotime('-3 months')))
-                                ->where('status', 1)
-                                ->count();
+            $akun_kadaluwarsa = AkunPremium::where('expired_date', '<', \Carbon\Carbon::now())->count();
             return view('pages.akun-premium.index', [
                 'getAkunPremium' => $akun,
                 'getWaitingAkun' => $waiting_akun,
