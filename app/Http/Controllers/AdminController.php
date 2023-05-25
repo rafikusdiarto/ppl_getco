@@ -143,10 +143,13 @@ class AdminController extends Controller
 
     public function acc(Request $request)
     {
+        $add_expired_date = \Carbon\Carbon::now()->addDays(90)->format('d/m/y');
         DB::beginTransaction();
         try{
             AkunPremium::create([
                 'user_id' => $request->id,
+                'tanggal_bayar' => \Carbon\Carbon::now(),
+                'expired_date' => $add_expired_date
             ]);
             AkunPremiumNew::where('user_id', $request->id)->update(['status' => true]);
             User::where('id', $request->id)->update(['is_premium' => true]);

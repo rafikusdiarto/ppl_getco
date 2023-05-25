@@ -12,7 +12,7 @@
             <input type="hidden" name="user_id" value="{{old('user_id',$getPremium->user_id)}}">
             <div class="mb-3">
                 <label for="no_rek" class="form-label">No. Rekening</label>
-                <input type="text" class="form-control" id="no_rek" name="no_rek" value="{{ old('no_rek', $getPremium->no_rek) }}">
+                <input type="text" class="form-control" id="no_rek" name="no_rek" value="{{ old('no_rek', $getPremium->no_rek) }}" required>
             </div>
             <div class="mb-3">
                 <label for="tanggal_bayar" class="form-label">Tanggal Bayar</label>

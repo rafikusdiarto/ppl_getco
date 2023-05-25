@@ -3,7 +3,7 @@
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
+        {{-- {{ dd($getExpiredAkun) }} --}}
         <div class="card shadow mb-4 p-4">
             <h1 class="h-3 mb-2 text-gray-800">Syarat dan Ketentuan Akun Premium</h1>
             <div class="p-4">
@@ -61,16 +61,14 @@
                                     @endif
                                     <td class="text-center">
                                         @php
-                                            $premiumExpired = date('Y-M-d', strtotime($info->updated_at . ' + 3 months'));
+                                            // $premiumExpired = date('Y-M-d', strtotime($info->updated_at . ' + 3 months'));
                                         @endphp
-                                        @if ( now() >= $premiumExpired)
+                                        @if ( now() >= $info->expired_date)
                                         <span class="text-danger">
                                             Non Active <br>
-                                            <span>{{$info->updated_at}}</span>
                                         </span>
                                         @else
                                         <span class="text-success">Active <br>
-                                            {{$info->updated_at}}
                                         </span>
 
                                         @endif
