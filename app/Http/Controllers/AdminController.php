@@ -34,9 +34,13 @@ class AdminController extends Controller
         try {
             $akun = AkunPremium::all();
             $waiting_akun = AkunPremiumNew::all();
+            $akun_kadaluwarsa = $waiting_akun->where('updated_at', '<', date('Y-m-d', strtotime('-3 months')))
+                                ->where('status', 1)
+                                ->count();
             return view('pages.akun-premium.index', [
                 'getAkunPremium' => $akun,
-                'getWaitingAkun' => $waiting_akun
+                'getWaitingAkun' => $waiting_akun,
+                'getExpiredAkun' => $akun_kadaluwarsa
             ]);
 
         } catch (Exception $e) {
@@ -52,8 +56,8 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
         $request->validate([
+            "user_id" => "required",
             "nama" => "required",
             "no_rek" => "required",
             "tanggal_bayar" => "required",
@@ -63,6 +67,7 @@ class AdminController extends Controller
        DB::beginTransaction();
        try {
             AkunPremium::create(([
+               "user_id" => $request->user_id,
                "nama" => $request->nama,
                "no_rek" => $request->no_rek,
                "tanggal_bayar" => $request->tanggal_bayar,

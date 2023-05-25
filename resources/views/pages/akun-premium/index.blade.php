@@ -52,7 +52,22 @@
                                     @else
                                     <td>{{ $info->expired_date}}</td>
                                     @endif
-                                    <td>Active</td>
+                                    <td class="text-center">
+                                        @php
+                                            $premiumExpired = date('Y-M-d', strtotime($info->updated_at . ' + 3 months'));
+                                        @endphp
+                                        @if ( now() >= $premiumExpired)
+                                        <span class="text-danger">
+                                            Non Active <br>
+                                            <span>{{$info->updated_at}}</span>
+                                        </span>
+                                        @else
+                                        <span class="text-success">Active <br>
+                                            {{$info->updated_at}}
+                                        </span>
+
+                                        @endif
+                                    </td>
                                     @role("Admin")
                                         <td class="d-flex">
                                             <form action="{{ route("edit-akun-premium", $info->id) }}" method="POST">
@@ -120,6 +135,24 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2 {{$getExpiredAkun > 0 ? 'bg-gradient-warning' : 'bg-white'}}
+                ">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Akun Kadaluwarsa</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$getExpiredAkun}} Akun</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

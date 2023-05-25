@@ -10,6 +10,7 @@
         <!-- DataTales Example -->
         <form action="{{ route("store-akun-premium") }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" class="form-control" id="tanggal_bayar" name="user_id" value=1 readonly>
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama</label>
                 <input type="text" class="form-control" id="nama" name="nama">
@@ -24,7 +25,7 @@
             </div>
             <div class="mb-3">
                 <label for="expired_date" class="form-label">Expired Date</label>
-                <input type="date" class="form-control" id="expired_date" name="expired_date">
+                <input type="text" class="form-control" id="expired_date" name="expired_date" value="{{\Carbon\Carbon::now()->addDays(90)->format('d/m/y')}}" readonly>
             </div>
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
