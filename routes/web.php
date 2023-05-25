@@ -31,9 +31,7 @@ use App\Http\Controllers\LaporanKeuanganSupplierController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [UserController::class, 'index']);
 
 Route::get('/landingpage', [LandingPageController::class, 'index']);
 
@@ -52,6 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::put("akun-premium/update/{akunpremium}", [AdminController::class, "update"])->name("update-akun-premium");
     Route::delete("akun-premium/delete/{id}", [AdminController::class, "destroy"])->name("delete-akun-premium");
     Route::patch("akun-premium/acc", [AdminController::class, "acc"])->name("acc-akun-premium");
+    Route::get("syarat-premium/edit", [AdminController::class, "editSyaratPremium"])->name("edit-syarat-premium");
+    Route::put("syarat-premium/update", [AdminController::class, "updateSyaratPremium"])->name("update-syarat-premium");
 
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');

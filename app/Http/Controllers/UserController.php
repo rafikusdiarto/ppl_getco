@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SyaratPremiumAkun;
 use App\Models\User;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::paginate();
-
-        return view('users.index', compact('users'));
+        $syarat = SyaratPremiumAkun::first();
+        return view('welcome', [
+            'syarat' => $syarat->body
+        ]);
     }
 }

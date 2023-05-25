@@ -4,6 +4,13 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
+        <div class="card shadow mb-4 p-4">
+            <h1 class="h-3 mb-2 text-gray-800">Syarat dan Ketentuan Akun Premium</h1>
+            <div class="p-4">
+                {!! $getSyarat !!}
+            </div>
+            <a href="{{ route('edit-syarat-premium') }}"><button class="btn btn-success">Edit syarat</button></a>
+        </div>
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Akun Premium</h1>
         <!-- DataTales Example -->
@@ -72,7 +79,7 @@
                                         <td class="d-flex">
                                             <form action="{{ route("edit-akun-premium", $info->id) }}" method="POST">
                                                 @csrf
-                                                <button class="btn btn-warning">Edit</button>
+                                                <button class="btn btn-warning mr-2">Edit</button>
                                             </form>
                                             <form method="POST" action="{{ route("delete-akun-premium", $info->id) }}">
                                                 @csrf
@@ -121,7 +128,7 @@
                                                 @method('patch')
                                                 @csrf
                                                 <input type="text" value="{{ $info->user->id }}" name="id" id="id" class="d-none">
-                                                <button class="btn btn-warning">Setujui</button>
+                                                <button class="btn btn-warning mr-2">Setujui</button>
                                             </form>
                                             <form method="POST" action="{{ route("supplier-bahan-baku.destroy", $info->id) }}">
                                                 @csrf
@@ -164,4 +171,11 @@
             Swal.fire("Sukses", `{{ session("success") }}`, "success");
         </script>
     @endif
+
+    <script>
+        // TRIX EDITOR
+    document.addEventListener('trix-file-accept', function(e){
+        e.preventDefault()
+    });
+    </script>
 @endsection
