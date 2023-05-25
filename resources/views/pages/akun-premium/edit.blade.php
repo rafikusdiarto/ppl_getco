@@ -6,22 +6,22 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-5 text-gray-800">Tambah Akun Premium Baru</h1>
-
-        <!-- DataTales Example -->
-        <form action="{{ route("update-akun-premium") }}" method="POST" enctype="multipart/form-data">
-            @method('put')
+        <form action="{{ url("akun-premium/update/$getPremium->id") }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('put')
+            {{$getPremium}}
+            <input type="hidden" name="user_id" value="{{old('user_id',$getPremium->user_id)}}">
             <div class="mb-3">
                 <label for="no_rek" class="form-label">No. Rekening</label>
-                <input type="text" class="form-control" id="no_rek" name="no_rek"value="{{$getDetailAkun->no_rek}}">
+                <input type="text" class="form-control" id="no_rek" name="no_rek" value="{{ old('no_rek', $getPremium->no_rek) }}">
             </div>
             <div class="mb-3">
                 <label for="tanggal_bayar" class="form-label">Tanggal Bayar</label>
-                <input type="date" class="form-control" id="tanggal_bayar" name="tanggal_bayar" value="{{$getDetailAkun->tanggal_bayar}}">
+                <input type="date" class="form-control" id="tanggal_bayar" name="tanggal_bayar" value="{{old('tanggal_bayar',$getPremium->tanggal_bayar)}}">
             </div>
             <div class="mb-3">
                 <label for="expired_date" class="form-label">Expired Date</label>
-                <input type="date" class="form-control" id="expired_date" name="expired_date" value="{{$getDetailAkun->expired_date}}">
+                <input type="date" class="form-control" id="expired_date" name="expired_date" value="{{old('expired_date',$getPremium->expired_date)}}">
             </div>
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>

@@ -47,10 +47,10 @@
                                     @else
                                     <td>{{ $info->tanggal_bayar}}</td>
                                     @endif
-                                    @if (! $info->tanggal_expired)
+                                    @if (! $info->expired_date)
                                         <td>Harap masukkan tanggal expired</td>
                                     @else
-                                    <td>{{ $info->tanggal_expired}}</td>
+                                    <td>{{ $info->expired_date}}</td>
                                     @endif
                                     <td>Active</td>
                                     @role("Admin")
@@ -59,7 +59,7 @@
                                                 @csrf
                                                 <button class="btn btn-warning">Edit</button>
                                             </form>
-                                            <form method="POST" action="{{ route("supplier-bahan-baku.destroy", $info->id) }}">
+                                            <form method="POST" action="{{ route("delete-akun-premium", $info->id) }}">
                                                 @csrf
                                                 @method("DELETE")
                                                 <button type="submit" class="btn btn-danger ">Hapus</button>
