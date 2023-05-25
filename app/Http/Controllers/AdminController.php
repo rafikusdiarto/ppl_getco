@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SyaratPremiumAkun;
+use App\Models\SyaratPremiumDetail;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\AkunPremium;
@@ -34,9 +36,11 @@ class AdminController extends Controller
         try {
             $akun = AkunPremium::all();
             $waiting_akun = AkunPremiumNew::all();
+            $syarat = SyaratPremiumAkun::first();
             return view('pages.akun-premium.index', [
                 'getAkunPremium' => $akun,
-                'getWaitingAkun' => $waiting_akun
+                'getWaitingAkun' => $waiting_akun,
+                'getSyarat' => $syarat->body
             ]);
 
         } catch (Exception $e) {
@@ -128,5 +132,21 @@ class AdminController extends Controller
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());
         }
+    }
+
+    public function editSyaratPremium(){
+        $syarat = SyaratPremiumAkun::first();
+        $cek = 'cek';
+        return view('pages.akun-premium.edit-syarat', [
+            'syarat' => $syarat->body,
+            'cek' => $cek
+        ]);
+    }
+    public function updateSyaratPremium(Request $request){
+        $validate = $request->validate([
+            'body' => 'required'
+        ]);
+        SyaratPremiumAkun::first()->update($validate);
+        return redirect()->route("akun-premium");
     }
 }

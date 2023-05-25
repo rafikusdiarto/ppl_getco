@@ -31,9 +31,7 @@ use App\Http\Controllers\LaporanKeuanganSupplierController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [UserController::class, 'index']);
 
 Route::get('/landingpage', [LandingPageController::class, 'index']);
 
@@ -49,9 +47,11 @@ Route::middleware('auth')->group(function () {
     Route::get("akun-premium/create", [AdminController::class, "create"])->name("create-akun-premium");
     Route::post("akun-premium/{akunpremium}/edit", [AdminController::class, "edit"])->name("edit-akun-premium");
     Route::post("akun-premium/store", [AdminController::class, "store"])->name("store-akun-premium");
-    Route::post("akun-premium/update/{akunpremium", [AdminController::class, "update"])->name("update-akun-premium");
+    Route::post("akun-premium/update/{akunpremium}", [AdminController::class, "update"])->name("update-akun-premium");
     Route::delete("akun-premium/store", [AdminController::class, "store"])->name("store-akun-premium");
     Route::patch("akun-premium/acc", [AdminController::class, "acc"])->name("acc-akun-premium");
+    Route::get("syarat-premium/edit", [AdminController::class, "editSyaratPremium"])->name("edit-syarat-premium");
+    Route::put("syarat-premium/update", [AdminController::class, "updateSyaratPremium"])->name("update-syarat-premium");
 
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
