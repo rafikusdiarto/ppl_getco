@@ -81,9 +81,10 @@ class AdminController extends Controller
 
     }
 
+
     public function edit(AkunPremium $akunpremium){
         try {
-            $this->param['getDetailAkun'] = AkunPremium::find($akunpremium->id);
+            $this->param['getPremium'] = AkunPremium::find($akunpremium->id);
             return view('pages.akun-premium.edit', $this->param);
         } catch(\Throwable $e){
             return redirect()->back()->withError($e->getMessage());
@@ -92,9 +93,10 @@ class AdminController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $request->validate([
+            "user_id" => "required",
             "no_rek" => "required",
             "tanggal_bayar" => "required",
             "expired_date" => "required",
@@ -102,20 +104,37 @@ class AdminController extends Controller
 
        DB::beginTransaction();
        try {
-            AkunPremium::create($request([
-               "no_rek" => $request->no_rek,
-               "tanggal_bayar" => $request->tanggal_bayar,
-               "expired_date" => $request->expired_date
-           ]));
+            $premium = AkunPremium::find($id);
+            $premium
+            ->update([
+                "user_id" => $request->user_id,
+                "no_rek" => $request->no_rek,
+                "tanggal_bayar" => $request->tanggal_bayar,
+                "expired_date" => $request->expired_date
+            ]);
            DB::commit();
-           return redirect()->route("akun-premium")->with("success", "Data berhasil ditambahkan");
+           return redirect()->route("akun-premium")->with("success", "Data berhasil diubah");
        } catch (Exception $e) {
            dd($e->getMessage());
            DB::rollBack();
            return redirect()->back()->with('error', $e->getMessage());
         }
-        
+
     }
+
+    public function destroy($id)
+    {
+        try {
+            AkunPremium::find($id)->delete();
+            return redirect()->route("akun-premium")->with("success", "Data berhasil dihapus");
+        } catch(\Throwable $e){
+            return redirect()->back()->withError($e->getMessage());
+        } catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withError($e->getMessage());
+        }
+    }
+
+
     public function acc(Request $request)
     {
         DB::beginTransaction();
