@@ -29,16 +29,6 @@
                             @endrole
                         </tr>
                         </thead>
-                        <tfoot>
-                        <tr>
-                            <th>Nama</th>
-                            <th>Kuantiti</th>
-                            <th>Updated_at</th>
-                            @role("Pemilik Usaha")
-                                <th>Aksi</th>
-                            @endrole
-                        </tr>
-                        </tfoot>
                         <tbody>
                             @foreach ($bahan_bakus as $bahan_baku)
                                 <tr>

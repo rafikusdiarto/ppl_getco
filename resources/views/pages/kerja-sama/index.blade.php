@@ -23,12 +23,6 @@
                                 <th>Aksi</th>
                             </tr>
                             </thead>
-                            <tfoot>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Aksi</th>
-                            </tr>
-                            </tfoot>
                             <tbody>
                                 @foreach ($suppliers as $supplier)
                                     <tr>
@@ -101,11 +95,6 @@
                             </tr>
                             </thead>
                             <tfoot>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Aksi</th>
-                            </tr>
-                            </tfoot>
                             <tbody>
                                 @foreach ($owners as $owner)
                                     @if ($owner->is_accepted == "Diterima" || $owner->is_accepted == "Menunggu Persetujuan")

@@ -51,39 +51,6 @@ class AdminController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
-    public function create()
-    {
-        return view("pages.akun-premium.create");
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            "user_id" => "required",
-            "nama" => "required",
-            "no_rek" => "required",
-            "tanggal_bayar" => "required",
-            "expired_date" => "required",
-       ]);
-
-       DB::beginTransaction();
-       try {
-            AkunPremium::create(([
-               "user_id" => $request->user_id,
-               "nama" => $request->nama,
-               "no_rek" => $request->no_rek,
-               "tanggal_bayar" => $request->tanggal_bayar,
-               "expired_date" => $request->expired_date
-           ]));
-           DB::commit();
-           return redirect()->route("akun-premium")->with("success", "Data berhasil ditambahkan");
-       } catch (Exception $e) {
-           dd($e->getMessage());
-           DB::rollBack();
-           return redirect()->back()->with('error', $e->getMessage());
-       }
-
-    }
 
 
     public function edit(AkunPremium $akunpremium){

@@ -96,6 +96,7 @@
             </div>
         </div>
     </li>
+    @if (Auth::user()->is_premium)
     <li class="nav-item @if(request()->routeIs('kerja-sama.index')) active @endif">
         <a class="nav-link" href="{{ route('kerja-sama.index') }}">
             <i class="fa-solid fa-file-pen"></i>
@@ -103,6 +104,7 @@
         </a>
     </li>
     <hr class="sidebar-divider">
+    @endif
     <li class="nav-item @if(request()->routeIs('laporan-keuangan-sup')) active @endif">
         <a class="nav-link" href="{{ route('laporan-keuangan-sup') }}">
             <i class="fa-solid fa-file-pen"></i>

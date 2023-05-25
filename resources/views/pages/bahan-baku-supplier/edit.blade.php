@@ -10,10 +10,10 @@
         <!-- DataTales Example -->
         <form action="{{ route("supplier-bahan-baku.update", $supplier_bahan_baku->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
+            @method('put')
             <div class="mb-3">
                 <label for="name" class="form-label">Nama Bahan Baku</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $supplier_bahan_baku->BahanBaku->name) }}">
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Gambar</label>
@@ -22,21 +22,21 @@
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Harga</label>
-                <input type="text" class="form-control" id="price" name="price">
+                <input type="text" class="form-control" id="price" name="price" value="{{ old('price', $supplier_bahan_baku->price) }}">
             </div>
             <div class="mb-3">
                 <label for="quantity" class="form-label">Kuantiti</label>
-                <input type="text" class="form-control" id="quantity" name="quantity">
+                <input type="text" class="form-control" id="quantity" name="quantity" value="{{ old('quantity', $supplier_bahan_baku->quantity) }}">
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Deskripsi</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description">{{ $supplier_bahan_baku->description }}</textarea>
             </div>
             <div class="mb-3">
-            <label for="status" class="form-label">Status Bahan Baku</label>
-            <select class="form-control" aria-label="Default select example" name="status">
-                <option value="Tersedia">Tersedia</option>
-                <option value="Tidak Tersedia">Tidak Tersedia</option>
+            <label for="available" class="form-label">Status Bahan Baku</label>
+            <select class="form-control" aria-label="Default select example" name="available">
+                <option value="1">Tersedia</option>
+                <option value="0">Tidak Tersedia</option>
             </select>
             </div>
             <button type="submit" class="btn btn-primary">Simpan</button>
