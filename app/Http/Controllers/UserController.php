@@ -10,7 +10,7 @@ class UserController extends Controller
     public function index()
     {
         $syarat = SyaratPremiumAkun::first();
-        return view('welcome', [
+        return view('welcome2', [
             'syarat' => $syarat->body
         ]);
     }

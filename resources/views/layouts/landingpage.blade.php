@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Getco</title>
+    <title>GetCo</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -37,25 +37,25 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">GETCO</div>
             </a>
-        
+
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-        
+
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Landing Page</span></a>
             </li>
-        
+
             <!-- Divider -->
             <hr class="sidebar-divider">
-        
+
             <!-- Heading -->
             <div class="sidebar-heading">
-                
+
             </div>
-        
+
             <!-- Nav Item - Pages Login-->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="">
@@ -64,7 +64,7 @@
                     </svg>
                     <span>Login Admin</span>
                 </a>
-                <a class="nav-link collapsed" href="" 
+                <a class="nav-link collapsed" href=""
                     aria-expanded="true" >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
                         <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
@@ -78,15 +78,15 @@
                     <span>Login Pemilik Usaha</span>
                 </a>
             </li>
-        
+
             {{-- <!-- Divider -->
             <hr class="sidebar-divider">
-        
+
             <!-- Heading -->
             <div class="sidebar-heading">
                 Tentang
             </div>
-        
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -107,39 +107,39 @@
                     </div>
                 </div>
             </li>
-        
+
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
-        
+
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li> --}}
-        
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-        
+
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-        
+
             <!-- Sidebar Message -->
             {{-- <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
                 <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
                 <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
             </div> --}}
-        
+
         </ul>
         <!-- End of Sidebar -->
-            
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -152,7 +152,7 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                
+
                     {{-- <!-- Topbar Search -->
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -166,10 +166,10 @@
                             </div>
                         </div>
                     </form> --}}
-                
+
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                
+
                         {{-- <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -193,7 +193,7 @@
                                 </form>
                             </div>
                         </li> --}}
-                
+
                         {{-- <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
@@ -244,7 +244,7 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                             </div>
                         </li>
-                
+
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
@@ -310,12 +310,12 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
                         </li> --}}
-                
+
                         {{-- <div class="topbar-divider d-none d-sm-block"></div> --}}
-                
+
                         {{-- <ul>
                             <li>
-                                <a href="/login" class="nav-link {{ ($active ===  "login") ? 'active' : ''}}"><i 
+                                <a href="/login" class="nav-link {{ ($active ===  "login") ? 'active' : ''}}"><i
                                     class="bi bi-box-arrow-in-right"></i>Login</a>
                             </li>
                         </ul> --}}
@@ -349,9 +349,9 @@
                                 </a>
                             </div>
                         </li> --}}
-                
+
                     </ul>
-                
+
                 </nav>
                 <!-- End of Topbar -->
 
@@ -379,13 +379,13 @@
                                         constantly updated collection of beautiful svg images that you can use
                                         completely free and without attribution!</p>
                                 </div>
-                            </div>     
+                            </div>
                         </div>
-                        
+
                         <div class="col-lg-6 mb-4">
-                            
+
                             <!-- Illustrations -->
-                    
+
                             <!-- Approach -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
@@ -399,12 +399,12 @@
                                         Bootstrap framework, especially the utility classes.</p>
                                 </div>
                             </div>
-                    
+
                         </div>
                     </div>
 
                     <!-- Content Row -->
-                    
+
 
                 </div>
                 <!-- /.container-fluid -->
