@@ -142,4 +142,16 @@ class AdminController extends Controller
         SyaratPremiumAkun::first()->update($validate);
         return redirect()->route("akun-premium");
     }
+
+    public function reject($id){
+        try {
+            AkunPremiumNew::find($id)->delete();
+            return redirect()->route("akun-premium")->with("success", "Permintaan akun premium ditolak");
+        } catch(\Throwable $e){
+            return redirect()->back()->withError($e->getMessage());
+        } catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withError($e->getMessage());
+        }
+
+    }
 }

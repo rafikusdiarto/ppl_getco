@@ -123,7 +123,7 @@
                                                 <input type="text" value="{{ $info->user->id }}" name="id" id="id" class="d-none">
                                                 <button class="btn btn-warning mr-2">Setujui</button>
                                             </form>
-                                            <form method="POST" action="{{ route("supplier-bahan-baku.destroy", $info->id) }}">
+                                            <form method="POST" action="{{ route("reject-akun-premium", $info->id) }}">
                                                 @csrf
                                                 @method("DELETE")
                                                 <button type="submit" class="btn btn-danger ">Tolak</button>

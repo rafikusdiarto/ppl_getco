@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::put("akun-premium/update/{akunpremium}", [AdminController::class, "update"])->name("update-akun-premium");
     Route::delete("akun-premium/delete/{id}", [AdminController::class, "destroy"])->name("delete-akun-premium");
     Route::patch("akun-premium/acc", [AdminController::class, "acc"])->name("acc-akun-premium");
+    Route::delete("akun-premium/{id}/reject", [AdminController::class, "reject"])->name("reject-akun-premium");
     Route::get("syarat-premium/edit", [AdminController::class, "editSyaratPremium"])->name("edit-syarat-premium");
     Route::put("syarat-premium/update", [AdminController::class, "updateSyaratPremium"])->name("update-syarat-premium");
 
