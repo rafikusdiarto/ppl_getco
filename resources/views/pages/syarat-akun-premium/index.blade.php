@@ -3,9 +3,6 @@
     <div class="container-fluid">
         <h1 class="text-primary font-weight-bold">Syarat dan Ketentuan Akun Premium</h1>
         {!! $syarat->body !!}
-
-
-
         <div class="row mt-4">
             @if (Auth::user()->is_premium)
             <button type="submit" class="btn btn-secondary mx-2">Akun Sudah Premium</button>
@@ -19,9 +16,9 @@
         </div>
     </div>
     @if(session("success"))
-            <script>
-                Swal.fire("Sukses", `{{ session("success") }}`, "success");
-            </script>
-        @endif
+        <script>
+            Swal.fire("Sukses", `{{ session("success") }}`, "success");
+        </script>
+    @endif
 
 @endsection
