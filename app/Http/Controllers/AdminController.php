@@ -146,7 +146,7 @@ class AdminController extends Controller
     public function reject($id){
         try {
             AkunPremiumNew::find($id)->delete();
-            return redirect()->route("akun-premium")->with("success", "Permintaan akun premium ditolak");
+            return redirect()->route("akun-premium")->with("failed", "Permintaan akun premium ditolak");
         } catch(\Throwable $e){
             return redirect()->back()->withError($e->getMessage());
         } catch(\Illuminate\Database\QueryException $e){

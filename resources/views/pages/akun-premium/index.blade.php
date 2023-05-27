@@ -165,6 +165,12 @@
         </script>
     @endif
 
+    @if(session("failed"))
+        <script>
+            Swal.fire("Ditolak", `{{ session("failed") }}`, "failed");
+        </script>
+    @endif
+
     <script>
         // TRIX EDITOR
     document.addEventListener('trix-file-accept', function(e){
