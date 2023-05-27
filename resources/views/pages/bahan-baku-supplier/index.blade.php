@@ -6,6 +6,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Bahan Baku Supplier</h1>
+        {{-- @dd(config('app.url')) --}}
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -32,41 +33,30 @@
                             @endrole
                         </tr>
                         </thead>
-                        {{-- <tfoot>
-                        <tr>
-                            <th>Nama</th>
-                            <th>Gambar</th>
-                            <th>Harga</th>
-                            <th>Kuantiti</th>
-                            <th>Deskripsi</th>
-                            <th>Status</th>
-                            @role("Supplier")
-                                <th>Aksi</th>
-                            @endrole
-                        </tr>
-                        </tfoot> --}}
                         <tbody>
                             @foreach ($bahan_bakus as $bahan_baku)
                                 <tr>
                                     <td>{{ $bahan_baku->BahanBaku->name }}</td>
                                     <td>
-                                        <img src="{{ $bahan_baku->getFirstMediaUrl("gambar-bahan-baku") }}" width="100px">
+                                        <img src="{{ $bahan_baku->getFirstMediaUrl('gambar-bahan-baku') }}" width="100px">
                                     </td>
                                     <td>@currency($bahan_baku->price)</td>
                                     <td>{{ $bahan_baku->quantity }}</td>
                                     <td>{{ $bahan_baku->description }}</td>
                                     <td>{{ $bahan_baku->available }}</td>
                                     @role("Supplier")
-                                        <td class="d-flex">
+                                    <td>
+                                        <div class="d-flex">
                                             <a href="{{ route("supplier-bahan-baku.edit", $bahan_baku->id) }}">
-                                                <button class="btn btn-warning">Edit</button>
+                                                <button class="btn btn-warning mr-2">Edit</button>
                                             </a>
                                             <form method="POST" action="{{ route("supplier-bahan-baku.destroy", $bahan_baku->id) }}">
                                                 @csrf
                                                 @method("DELETE")
                                                 <button type="submit" class="btn btn-danger">Hapus</button>
                                             </form>
-                                        </td>
+                                        </div>
+                                    </td>
                                     @endrole
                                 </tr>
                             @endforeach
