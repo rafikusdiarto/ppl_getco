@@ -95,7 +95,9 @@ class AdminController extends Controller
 
     public function destroy($id)
     {
+        $user = AkunPremium::find($id)->user;
         try {
+            User::where('id', $user->id)->update(['is_premium' => false]);
             AkunPremium::find($id)->delete();
             return redirect()->route("akun-premium")->with("success", "Data berhasil dihapus");
         } catch(\Throwable $e){
