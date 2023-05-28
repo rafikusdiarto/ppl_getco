@@ -1356,7 +1356,7 @@
                 Multiple Role Login
               </h4>
               <p class="mb-8 text-body-color lg:mb-11">
-                Anda bisa melakukan login sebagai salah role
+                Anda bisa melakukan login sebagai salah satu role
               </p>
             </div>
           </div>

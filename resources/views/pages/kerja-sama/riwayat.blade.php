@@ -14,7 +14,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    @role("Pemilik Usaha|Supplier")
+                    @role("Pemilik Usaha")
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             
                             <thead>
@@ -25,11 +25,31 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($requests as $request)
+                                @foreach ($requests_owner as $request)
                                 <tr>
                                     @role("Pemilik Usaha")
                                         <td>{{ $request->KerjaSama->Supplier->name }}</td>
                                     @endrole
+                                    <td>{{ $request->SupplierBahanBaku->BahanBaku->name }}</td>
+                                    <td>{{ $request->request }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endrole
+                    @role("Supplier")
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            
+                            <thead>
+                            <tr>
+                                <th>Nama Mitra</th>
+                                <th>Nama Barang</th>
+                                <th>Deskripsi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($requests_supplier as $request)
+                                <tr>
                                     @role("Supplier")
                                         <td>{{ $request->KerjaSama->PemilikUsaha->name }}</td>
                                     @endrole
@@ -39,6 +59,14 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @if (! Auth::user()->is_premium)
+                        <div class="alert-info">
+
+                            <h3 class="text-danger text-center">Ada permintaan baru!</h3>
+                            <p class="text-center">Harap upgrade ke premium agar dapat melihat pesanan!</p>
+                        </div>
+                        <a href="{{ url('syarat-akun-premium') }}"><button class="btn btn-success">Pindah ke akun premium</button></a>
+                        @endif
                     @endrole
                 </div>
             </div>

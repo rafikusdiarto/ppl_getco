@@ -28,8 +28,8 @@ class HomeController extends Controller
     {
         $akun = AkunPremium::all();
 
-        $valid = $akun->where('expired_date', '>', Carbon::now());
-        $expired = $akun->where('expired_date', '<', Carbon::now());
+        $valid = $akun->where('expired_date', '<', Carbon::now());
+        $expired = $akun->where('expired_date', '>', Carbon::now());
         foreach ($valid as $i){
             $user = $i->user_id;
             User::where('id', $user)->update(['is_premium' => true]);

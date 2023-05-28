@@ -32,13 +32,13 @@
                                                 @if ($supplier->KerjaSama->first()->is_accepted == "Menunggu Persetujuan")
                                                     <p class="text-dark">Menunggu persetujuan</p>
                                                 @elseif ($supplier->KerjaSama->first()->is_accepted == "Diterima")
-                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal{{$supplier->kerjaSama->first()->id}}">
                                                         + Buat permintaan
                                                     </button>
                                                     <a href="{{ route("kerja-sama.riwayat.index", $supplier->KerjaSama->first()->id) }}">
                                                         <button class="btn btn-primary">Riwayat</button>
                                                     </a>
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="exampleModal{{$supplier->kerjaSama->first()->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <form action="{{ route("kerja-sama.storePermintaan", $supplier->KerjaSama->first()->id) }}" method="POST">
                                                                 @csrf
@@ -48,6 +48,7 @@
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
+                                                                        <input type="text" value="{{ $supplier->id }}" readonly>
                                                                         <div class="mb-3">
                                                                             <label>Nama barang baku</label>
                                                                             <select class="form-select" aria-label="Default select example" name="barang_baku">

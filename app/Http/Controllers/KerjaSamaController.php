@@ -77,9 +77,17 @@ class KerjaSamaController extends Controller
                 "telah_dibaca" => 1,
             ]);
         }
-        return view("pages.kerja-sama.riwayat")->with([
-            "requests" => PermintaanBahanBaku::with(["KerjaSama"])->whereKerjaSamaId($kerjaSama->id)->get()
-        ]);
+        if(Auth::user()->is_premium){
+            return view("pages.kerja-sama.riwayat")->with([
+                "requests_owner" => PermintaanBahanBaku::with(["KerjaSama"])->whereKerjaSamaId($kerjaSama->id)->get(),
+                "requests_supplier" => PermintaanBahanBaku::with(["KerjaSama"])->whereKerjaSamaId($kerjaSama->id)->get(),
+            ]);
+        }else{
+            return view("pages.kerja-sama.riwayat")->with([
+                "requests_owner" => PermintaanBahanBaku::with(["KerjaSama"])->whereKerjaSamaId($kerjaSama->id)->get(),
+                "requests_supplier" => PermintaanBahanBaku::with(["KerjaSama"])->whereKerjaSamaId($kerjaSama->id)->limit(3)->get(),
+            ]);
+        }
     }
 
     public function updateKerjaSama(Request $request, KerjaSama $kerjaSama)
