@@ -26,18 +26,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $akun = AkunPremium::all();
-
-        $valid = $akun->where('expired_date', '<', Carbon::now());
-        $expired = $akun->where('expired_date', '>', Carbon::now());
-        foreach ($valid as $i){
-            $user = $i->user_id;
-            User::where('id', $user)->update(['is_premium' => true]);
-        }
-        foreach ($expired as $i){
-            $user = $i->user;
-            User::where('id', $user)->update(['is_premium' => false]);
-        }
         return view('home');
     }
 }

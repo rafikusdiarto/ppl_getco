@@ -13,6 +13,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <script src="{{ asset("assets/sweetalert2/dist/sweetalert2.all.min.js") }}"></script>
+    @yield('custom_styles')
 
 </head>
 
