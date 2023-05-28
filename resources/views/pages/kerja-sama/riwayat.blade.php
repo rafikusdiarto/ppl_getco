@@ -59,7 +59,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        @if (! Auth::user()->is_premium)
+                        @if (! Auth::user()->is_premium && count($requests_owner) > 3)
                         <div class="alert-info">
 
                             <h3 class="text-danger text-center">Ada permintaan baru!</h3>
