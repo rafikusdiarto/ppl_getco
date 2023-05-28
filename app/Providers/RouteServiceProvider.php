@@ -2,14 +2,16 @@
 
 namespace App\Providers;
 
-use App\Models\PermintaanBahanBaku;
-use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\Models\User;
+use App\Models\AkunPremium;
 use Illuminate\Http\Request;
+use App\Models\PermintaanBahanBaku;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -21,12 +23,24 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home';
+    public const LOGIN = '/login';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
     public function boot(): void
     {
+        $akun = AkunPremium::all();
+        $valid = $akun->where('expired_date', '>', \Carbon\Carbon::now());
+        $expired = $akun->where('expired_date', '<', \Carbon\Carbon::now());
+        foreach ($valid as $i){
+            $user = $i->user;
+            User::where('id', $user->id)->update(['is_premium' => true]);
+        }
+        foreach ($expired as $i){
+            $user = $i->user;
+            User::where('id', $user->id)->update(['is_premium' => false]);
+        }
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });

@@ -35,6 +35,13 @@
                             </div>
                             @enderror
 
+                            <div class="form-group">
+                                <select class="form-select form-control form-control" style="border-radius: 9999px; font-size: 14px" aria-label="Default select example" name="role">
+                                    <option value="Pemilik Usaha" selected>Pemilik Usaha</option>
+                                    <option value="Supplier">Supplier</option>
+                                </select>
+                            </div>
+
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password" name="password" class="form-control form-control-user @error('password') is-invalid @enderror"

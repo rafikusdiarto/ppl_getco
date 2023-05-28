@@ -71,4 +71,10 @@
         </div>
 
     </div>
+    @if(session("success"))
+    <div>jossss     </div>
+    <script>
+        Swal.fire("Sukses", `{{ session("success") }}`, "success");
+    </script>
+@endif
 @endsection

@@ -42,16 +42,16 @@ class AdminController extends Controller
             $akun_kadaluwarsa = AkunPremium::where('expired_date', '<', \Carbon\Carbon::now())->count();
 
 
-            $valid = $akun->where('expired_date', '<', \Carbon\Carbon::now());
-            $expired = $akun->where('expired_date', '>', \Carbon\Carbon::now());
-            foreach ($valid as $i){
-                $user = $i->user_id;
-                User::where('id', $user)->update(['is_premium' => true]);
-            }
-            foreach ($expired as $i){
-                $user = $i->user;
-                User::where('id', $user)->update(['is_premium' => false]);
-            }
+            // $valid = $akun->where('expired_date', '>', \Carbon\Carbon::now());
+            // $expired = $akun->where('expired_date', '<', \Carbon\Carbon::now());
+            // foreach ($valid as $i){
+            //     $user = $i->user;
+            //     User::where('id', $user->id)->update(['is_premium' => true]);
+            // }
+            // foreach ($expired as $i){
+            //     $user = $i->user;
+            //     User::where('id', $user->id)->update(['is_premium' => false]);
+            // }
 
             return view('pages.akun-premium.index', [
                 'getAkunPremium' => $akun,
