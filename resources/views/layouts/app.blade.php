@@ -196,11 +196,7 @@
         <!-- Page level plugins -->
         <script src="{{ asset('js/chart.js/Chart.min.js')}}"></script>
         <script src="{{ asset('js/chart.js/Chart.min.js')}}"></script>
-        <script src="{{ asset('js/datatables/jquery.dataTables.min.js')}}"></script>
-        <script src="{{ asset('js/datatables/dataTables.bootstrap4.min.js')}}"></script>
-
-        <!-- Page level custom scripts -->
-        <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
+        
 
 
         <!-- Page level custom scripts -->

@@ -43,4 +43,12 @@
             </div>
         </div>
     </div>
+
+    @section('custom_scripts')
+    <script src="{{ asset('js/datatables/jquery.dataTables.min.js')}}"></script>
+        <script src="{{ asset('js/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
+    @endsection
 @endsection
