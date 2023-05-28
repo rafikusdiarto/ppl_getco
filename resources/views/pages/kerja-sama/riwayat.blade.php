@@ -24,13 +24,6 @@
                                 <th>Deskripsi</th>
                             </tr>
                             </thead>
-                            <tfoot>
-                            <tr>
-                                <th>Nama Mitra</th>
-                                <th>Nama Barang</th>
-                                <th>Deskripsi</th>
-                            </tr>
-                            </tfoot>
                             <tbody>
                                 @foreach ($requests as $request)
                                 <tr>
@@ -40,7 +33,7 @@
                                     @role("Supplier")
                                         <td>{{ $request->KerjaSama->PemilikUsaha->name }}</td>
                                     @endrole
-                                    <td>{{ $request->PemilikBahanBaku->BahanBaku->name }}</td>
+                                    <td>{{ $request->SupplierBahanBaku->BahanBaku->name }}</td>
                                     <td>{{ $request->request }}</td>
                                 </tr>
                                 @endforeach

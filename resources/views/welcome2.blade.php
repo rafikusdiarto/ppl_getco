@@ -64,8 +64,8 @@
                                 </a>
                             </li>
                         </ul>
-                        @else
-                </nav>
+                      </nav>
+                      @else
             </div>
             <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
               <a

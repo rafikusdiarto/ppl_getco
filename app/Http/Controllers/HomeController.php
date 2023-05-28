@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\User;
+use App\Models\AkunPremium;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,18 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $akun = AkunPremium::all();
+
+        $valid = $akun->where('expired_date', '>', Carbon::now());
+        $expired = $akun->where('expired_date', '<', Carbon::now());
+        // foreach ($valid as $i){
+        //     $user = $i->user;
+        //     User::where('id', $user->id)->update(['is_premium' => true]);
+        // }
+        // foreach ($expired as $i){
+        //     $user = $i->user;
+        //     User::where('id', $user->id)->update(['is_premium' => false]);
+        // }
         return view('home');
     }
 }

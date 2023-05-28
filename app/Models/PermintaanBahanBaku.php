@@ -20,4 +20,8 @@ class PermintaanBahanBaku extends Model
     {
         return $this->belongsTo(PemilikBahanBaku::class);
     }
+    public function SupplierBahanBaku()
+    {
+        return $this->belongsTo(SupplierBahanBaku::class);
+    }
 }
