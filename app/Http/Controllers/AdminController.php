@@ -149,7 +149,7 @@ class AdminController extends Controller
             AkunPremiumNew::where('user_id', $request->id)->update(['status' => true]);
             User::where('id', $request->id)->update(['is_premium' => true]);
             DB::commit();
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Akun berhasil disetujui');
         }catch (Exception $e){
             dd($e->getMessage());
             DB::rollBack();

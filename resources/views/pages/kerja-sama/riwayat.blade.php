@@ -63,7 +63,7 @@
                         <div class="alert-info">
 
                             <h3 class="text-danger text-center">Ada permintaan baru!</h3>
-                            <p class="text-center">Harap upgrade ke premium agar dapat melihat pesanan!</p>
+                            <p class="text-center">Harap upgrade ke premium agar dapat melihat permintaan!</p>
                         </div>
                         <a href="{{ url('syarat-akun-premium') }}"><button class="btn btn-success">Pindah ke akun premium</button></a>
                         @endif
