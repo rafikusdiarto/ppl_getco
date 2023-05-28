@@ -83,7 +83,7 @@
                                 @forelse ($notifications as $notification)
                                     <a class="dropdown-item d-flex align-items-center" href="{{ route("kerja-sama.riwayat.index", $notification->kerja_sama_id) }}">
                                         <div class="dropdown-list-image mr-3">
-                                            <img class="rounded-circle" src="img/undraw_profile_1.svg">
+                                            <img class="rounded-circle" src="{{ asset('images/undraw_profile_1.svg') }}">
                                             <div class="status-indicator {{ $notification->telah_dibaca == 0 ? "bg-danger" : "" }}"></div>
                                         </div>
                                         <div class="font-weight-bold">
