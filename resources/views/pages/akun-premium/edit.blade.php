@@ -20,7 +20,7 @@
             </div>
             <div class="mb-3">
                 <label for="expired_date" class="form-label">Expired Date</label>
-                <input type="text" class="form-control" id="expired_date" name="expired_date" value="{{\Carbon\Carbon::now()->addDays(90)->format('d/m/y')}}">
+                <input type="date" class="form-control" id="expired_date" name="expired_date" value="{{ old('expired_date', $getPremium->expired_date) }}">
             </div>
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>

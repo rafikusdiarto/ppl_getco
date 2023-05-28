@@ -55,17 +55,14 @@
                                     <td>{{ $info->expired_date}}</td>
                                     @endif
                                     <td class="text-center">
-                                        @php
-                                            // $premiumExpired = date('Y-M-d', strtotime($info->updated_at . ' + 3 months'));
-                                        @endphp
-                                        @if ( now() >= $info->expired_date)
-                                        <span class="text-danger">
-                                            Non Active <br>
-                                        </span>
+                                        @if ( now() > $info->expired_date)
+                                            <span class="text-danger">
+                                                Non Active <br>
+                                            </span>
                                         @else
-                                        <span class="text-success">Active <br>
-                                        </span>
-
+                                            <span class="text-success">
+                                                Active <br>
+                                            </span>
                                         @endif
                                     </td>
                                     @role("Admin")
