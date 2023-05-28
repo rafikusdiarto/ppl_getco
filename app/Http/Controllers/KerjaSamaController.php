@@ -16,9 +16,6 @@ class KerjaSamaController extends Controller
 {
     public function index()
     {  
-        // $i = KerjaSama::find()->PermintaanBahanBakus;
-        // $cek = PermintaanBahanBaku::where()->distinct('kerja_sama_id');
-        // dump($cek);
         return view("pages.kerja-sama.index")->with([
             "suppliers" => User::with("KerjaSama")->whereHas("roles", function ($query) {
                 $query->whereName("Supplier");
@@ -53,7 +50,6 @@ class KerjaSamaController extends Controller
 
     public function storePermintaan(Request $request, $kerjaSama_id)
     {  
-        dd($kerjaSama_id);
         $request->validate([
             "kerja_sama_id" => "integer|exists:kerja_samas,id",
             "barang_baku" => "integer|exists:bahan_bakus,id",
@@ -76,7 +72,6 @@ class KerjaSamaController extends Controller
 
     public function index_riwayat(KerjaSama $kerjaSama)
     {
-        // dd($kerjaSama);
         if (Auth::user()->hasRole("Supplier")) {
             PermintaanBahanBaku::whereKerjaSamaId($kerjaSama->id)->update([
                 "telah_dibaca" => 1,
