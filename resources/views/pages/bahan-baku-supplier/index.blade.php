@@ -43,7 +43,11 @@
                                     <td>@currency($bahan_baku->price)</td>
                                     <td>{{ $bahan_baku->quantity }}</td>
                                     <td>{{ $bahan_baku->description }}</td>
-                                    <td>{{ $bahan_baku->available }}</td>
+                                    @if ($bahan_baku->available == '1')
+                                        <td>Tersedia</td>
+                                    @else
+                                        <td>Tidak tersedia</td>
+                                    @endif
                                     @role("Supplier")
                                     <td>
                                         <div class="d-flex">
