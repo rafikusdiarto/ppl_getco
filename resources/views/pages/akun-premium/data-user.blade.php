@@ -31,15 +31,11 @@
                                 <td>{{$info->name}}</td>
                                 <td>{{$info->email}}</td>
                                 <td>
-
                                     {{$info->roles->implode('name', ', ')}}
-                                    {{-- @foreach ( $info as $role )
-                                     {{$role->roles->name}}
-                                    @endforeach --}}
                                 </td>
-                                <td>{{$info->nik}}</td>
-                                <td>{{$info->phone}}</td>
-                                <td>{{$info->address}}</td>
+                                <td>{{$info->clientData ? $info->clientData->nik : ''}}</td>
+                                <td>{{$info->clientData ? $info->clientData->phone : ''}}</td>
+                                <td>{{$info->clientData ? $info->clientData->address : ''}}</td>
                             </tr>
                         @endforeach
                     </tbody>

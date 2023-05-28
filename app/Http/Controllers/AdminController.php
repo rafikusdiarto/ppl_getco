@@ -69,10 +69,7 @@ class AdminController extends Controller
 
     public function dataUser(){
         try {
-            $dataUser = User::whereHas('roles')->get();
-            $roles = Role::all();
-            // dd($dataUser);
-            // dd($roles);
+            $dataUser = User::all()->skip(1);
             return view('pages.akun-premium.data-user', [
                 'getUsers' => $dataUser,
             ]);
