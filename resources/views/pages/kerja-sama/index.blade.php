@@ -45,13 +45,13 @@
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Permintaan</h1>
-                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        <button type="button" class="btn-close border border-0" data-bs-dismiss="modal" aria-label="Close">X</button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <input type="text" value="{{ $supplier->id }}" readonly>
+                                                                        <input type="hidden" value="{{ $supplier->id }}" readonly>
                                                                         <div class="mb-3">
                                                                             <label>Nama barang baku</label>
-                                                                            <select class="form-select" aria-label="Default select example" name="barang_baku">
+                                                                            <select class="form-select form-control" aria-label="Default select example" name="barang_baku">
                                                                                 @foreach ($bahan_bakus as $bahan_baku)
                                                                                 <option value="{{ $bahan_baku->id }}">{{ $bahan_baku->BahanBaku->name }}</option>
                                                                                 @endforeach
