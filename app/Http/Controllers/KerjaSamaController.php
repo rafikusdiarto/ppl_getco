@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class KerjaSamaController extends Controller
 {
     public function index()
-    {  
+    {
         // $i = KerjaSama::find()->PermintaanBahanBakus;
         // $cek = PermintaanBahanBaku::where()->distinct('kerja_sama_id');
         // dump($cek);
@@ -52,8 +52,7 @@ class KerjaSamaController extends Controller
     }
 
     public function storePermintaan(Request $request, $kerjaSama_id)
-    {  
-        dd($kerjaSama_id);
+    {
         $request->validate([
             "kerja_sama_id" => "integer|exists:kerja_samas,id",
             "barang_baku" => "integer|exists:bahan_bakus,id",
