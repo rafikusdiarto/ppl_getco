@@ -46,12 +46,14 @@
             </div>
         </div>
     </li>
+    @if (Auth::user()->is_premium)
     <li class="nav-item @if(request()->routeIs('kerja-sama.index')) active @endif">
         <a class="nav-link" href="{{ route('kerja-sama.index') }}">
             <i class="fa-solid fa-file-pen"></i>
             <span>{{ __('Pencatatan Bahan Baku') }}</span>
         </a>
     </li>
+    @endif
     @if (Auth::user()->is_premium)
     <li class="nav-item @if(request()->routeIs('kalkulator-produksi')) active @endif">
         <a class="nav-link" href="{{ route('kalkulator-produksi') }}">
@@ -117,7 +119,7 @@
         </a>
     </li>
     @endrole
-    
+
     @role(['Pemilik Usaha', 'Supplier'])
     <hr class="sidebar-divider">
     <li class="nav-item @if(request()->routeIs('syarat-akun-premium.index')) active @endif">
