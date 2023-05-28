@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SyaratPremiumAkun;
-use App\Models\SyaratPremiumDetail;
+use Exception;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\ClientData;
 use App\Models\AkunPremium;
-use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\AkunPremiumNew;
+use App\Models\SyaratPremiumAkun;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use App\Models\SyaratPremiumDetail;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -50,7 +52,7 @@ class AdminController extends Controller
             //     $user = $i->user;
             //     User::where('id', $user->id)->update(['is_premium' => false]);
             // }
-            
+
             return view('pages.akun-premium.index', [
                 'getAkunPremium' => $akun,
                 'getWaitingAkun' => $waiting_akun,
@@ -62,6 +64,22 @@ class AdminController extends Controller
             dd($e->getMessage());
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function dataUser(){
+        try {
+            $dataUser = User::whereHas('roles')->get();
+            $roles = Role::all();
+            // dd($dataUser);
+            // dd($roles);
+            return view('pages.akun-premium.data-user', [
+                'getUsers' => $dataUser,
+            ]);
+        } catch(\Throwable $e){
+            return redirect()->back()->withError($e->getMessage());
+        } catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withError($e->getMessage());
         }
     }
 

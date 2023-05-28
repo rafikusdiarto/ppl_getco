@@ -24,6 +24,12 @@
     <!-- Nav Item - Tables -->
     {{-- ADMIN --}}
     @role('Admin')
+    <li class="nav-item @if(request()->routeIs('data-user')) active @endif">
+        <a class="nav-link" href="{{ route('data-user') }}">
+            <i class="fa-solid fa-file-pen"></i>
+            <span>{{ __('Data User') }}</span>
+        </a>
+    </li>
     <li class="nav-item @if(request()->routeIs('akun-premium')) active @endif">
         <a class="nav-link" href="{{ route('akun-premium') }}">
             <i class="fa-solid fa-store"></i>

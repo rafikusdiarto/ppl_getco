@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
 
     // Admin
     Route::get("akun-premium", [AdminController::class, "index"])->name("akun-premium");
+    Route::get("data-user", [AdminController::class, "dataUser"])->name("data-user");
     Route::post("akun-premium/{akunpremium}/edit", [AdminController::class, "edit"])->name("edit-akun-premium");
     Route::put("akun-premium/update/{akunpremium}", [AdminController::class, "update"])->name("update-akun-premium");
     Route::delete("akun-premium/delete/{id}", [AdminController::class, "destroy"])->name("delete-akun-premium");
