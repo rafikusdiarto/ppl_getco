@@ -2,24 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KerjaSama;
-use App\Models\PemilikBahanBaku;
-use App\Models\PermintaanBahanBaku;
-use App\Models\User;
 use Exception;
+use App\Models\User;
+use App\Models\KerjaSama;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\PemilikBahanBaku;
+use App\Models\SupplierBahanBaku;
 use Illuminate\Support\Facades\DB;
+use App\Models\PermintaanBahanBaku;
+use Illuminate\Support\Facades\Auth;
 
 class KerjaSamaController extends Controller
 {
     public function index()
-    {
+    {  
+        // $i = KerjaSama::find()->PermintaanBahanBakus;
+        // $cek = PermintaanBahanBaku::where()->distinct('kerja_sama_id');
+        // dump($cek);
         return view("pages.kerja-sama.index")->with([
             "suppliers" => User::with("KerjaSama")->whereHas("roles", function ($query) {
                 $query->whereName("Supplier");
             })->get(),
-            "bahan_bakus" => PemilikBahanBaku::whereUserId(Auth::user()->id)->get(),
+            "bahan_bakus" => SupplierBahanBaku::all(),
             "owners" => KerjaSama::with("Supplier", "PemilikUsaha")->whereSupplierId(Auth::user()->id)->get(),
         ]);
     }
@@ -48,18 +52,18 @@ class KerjaSamaController extends Controller
     }
 
     public function storePermintaan(Request $request, $kerjaSama_id)
-    {
+    {  
+        dd($kerjaSama_id);
         $request->validate([
             "kerja_sama_id" => "integer|exists:kerja_samas,id",
             "barang_baku" => "integer|exists:bahan_bakus,id",
             "permintaan" => "required",
         ]);
-
         DB::beginTransaction();
         try {
             PermintaanBahanBaku::create([
                 "kerja_sama_id" => $kerjaSama_id,
-                "pemilik_bahan_baku_id" => $request->barang_baku,
+                "supplier_bahan_baku_id" => $request->barang_baku,
                 "request" => $request->permintaan,
             ]);
             DB::commit();
@@ -72,6 +76,7 @@ class KerjaSamaController extends Controller
 
     public function index_riwayat(KerjaSama $kerjaSama)
     {
+        // dd($kerjaSama);
         if (Auth::user()->hasRole("Supplier")) {
             PermintaanBahanBaku::whereKerjaSamaId($kerjaSama->id)->update([
                 "telah_dibaca" => 1,
