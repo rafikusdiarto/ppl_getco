@@ -70,8 +70,12 @@ class AdminController extends Controller
     public function dataUser(){
         try {
             $dataUser = User::all()->skip(1);
+            $supplierCount = User::role('Supplier')->count();
+            $ownerCount = User::role('Pemilik Usaha')->count();
             return view('pages.akun-premium.data-user', [
                 'getUsers' => $dataUser,
+                'getSuppliers' => $supplierCount,
+                'getOwners' => $ownerCount,
             ]);
         } catch(\Throwable $e){
             return redirect()->back()->withError($e->getMessage());
