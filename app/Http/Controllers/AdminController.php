@@ -158,19 +158,32 @@ class AdminController extends Controller
     }
 
     public function editSyaratPremium(){
-        $syarat = SyaratPremiumAkun::first();
-        $cek = 'cek';
-        return view('pages.akun-premium.edit-syarat', [
-            'syarat' => $syarat->body,
-            'cek' => $cek
-        ]);
+        try {
+            $syarat = SyaratPremiumAkun::first();
+            $cek = 'cek';
+            return view('pages.akun-premium.edit-syarat', [
+                'syarat' => $syarat->body,
+                'cek' => $cek
+            ]);
+        } catch(\Throwable $e){
+            return redirect()->back()->withError($e->getMessage());
+        } catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withError($e->getMessage());
+        }
+
     }
     public function updateSyaratPremium(Request $request){
-        $validate = $request->validate([
-            'body' => 'required'
-        ]);
-        SyaratPremiumAkun::first()->update($validate);
-        return redirect()->route("akun-premium");
+        try {
+            $validate = $request->validate([
+                'body' => 'required'
+            ]);
+            SyaratPremiumAkun::first()->update($validate);
+            return redirect()->route("akun-premium")->with('success', 'Syarat & ketentuan berhasil diubah');
+        } catch(\Throwable $e){
+            return redirect()->back()->withError($e->getMessage());
+        } catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withError($e->getMessage());
+        }
     }
 
     public function reject($id){
