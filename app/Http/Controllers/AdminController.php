@@ -41,18 +41,6 @@ class AdminController extends Controller
             $syarat = SyaratPremiumAkun::first();
             $akun_kadaluwarsa = AkunPremium::where('expired_date', '<', \Carbon\Carbon::now())->count();
 
-
-            // $valid = $akun->where('expired_date', '>', \Carbon\Carbon::now());
-            // $expired = $akun->where('expired_date', '<', \Carbon\Carbon::now());
-            // foreach ($valid as $i){
-            //     $user = $i->user;
-            //     User::where('id', $user->id)->update(['is_premium' => true]);
-            // }
-            // foreach ($expired as $i){
-            //     $user = $i->user;
-            //     User::where('id', $user->id)->update(['is_premium' => false]);
-            // }
-
             return view('pages.akun-premium.index', [
                 'getAkunPremium' => $akun,
                 'getWaitingAkun' => $waiting_akun,
@@ -142,7 +130,7 @@ class AdminController extends Controller
 
     public function acc(Request $request)
     {
-        $add_expired_date = \Carbon\Carbon::now()->addDays(90)->format('d/m/y');
+        $add_expired_date = \Carbon\Carbon::now()->addDays(90);
         DB::beginTransaction();
         try{
             AkunPremium::create([

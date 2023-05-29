@@ -47,12 +47,12 @@
                                     @if (! $info->tanggal_bayar)
                                         <td>Harap masukkan tanggal pembayaran</td>
                                     @else
-                                    <td>{{ $info->tanggal_bayar}}</td>
+                                    <td>{{ $info->tanggal_bayar->format('d/m/Y')}}</td>
                                     @endif
                                     @if (! $info->expired_date)
                                         <td>Harap masukkan tanggal expired</td>
                                     @else
-                                    <td>{{ $info->expired_date}}</td>
+                                    <td>{{ $info->expired_date->format('d/m/Y')}}</td>
                                     @endif
                                     <td class="text-center">
                                         @if ( now() > $info->expired_date)

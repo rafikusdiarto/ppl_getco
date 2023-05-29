@@ -20,6 +20,8 @@ class AkunPremium extends Model
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'expired_date'=>'datetime',
+        'tanggal_bayar'=>'datetime',
     ];
 
     public function User()
